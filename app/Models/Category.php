@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
+    // insert dữ liệu
+    protected $fillable = ['name', 'parent_id', 'slug'];
 }
