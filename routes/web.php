@@ -22,4 +22,12 @@ Route::prefix('categories')->group(function () {
         'as' => 'categories.store',
         'uses' => 'App\Http\Controllers\CategoryController@store'
      ]);
+     Route::get('/edit(id)', [
+        'as' => 'categories.edit',
+        'uses' => 'App\Http\Controllers\CategoryController@edit'
+     ]);
+     Route::post('/delete', [
+        'as' => 'categories.delete',
+        'uses' => 'App\Http\Controllers\CategoryController@delete'
+     ]);
 });

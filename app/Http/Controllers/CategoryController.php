@@ -21,7 +21,8 @@ class CategoryController extends Controller
         return view('category.add', compact('htmlOption'));
     }
     public function index(){
-        return view('category.index');
+        $categories = $this->category->latest()->paginate(5);
+        return view('category.index', compact('categories'));
     }
     public function store(Request $request)
     {
@@ -31,5 +32,12 @@ class CategoryController extends Controller
             'slug' => Str::slug($request->name)
         ]);
         return redirect() -> route('categories.index');
+    }
+    public function edit($id)
+    {
+
+    }
+    public function delete($id){
+
     }
 }
