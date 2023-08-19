@@ -44,7 +44,8 @@ class CategoryController extends Controller
         return view('category.edit', compact('category', 'htmlOption'));
     }
     public function delete($id){
-
+        $this->category->find($id)->delete();
+        return redirect() -> route('categories.index');
     }
     public function update ($id, Request $request)
     {
