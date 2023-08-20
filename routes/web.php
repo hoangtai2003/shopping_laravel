@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
+Route::get('/', 'App\Http\Controllers\AdminController@loginAdmin', function () {
+    return view('welcome');
+});
+Route::post('/', 'App\Http\Controllers\AdminController@postLoginAdmin', function () {
     return view('welcome');
 });
 Route::get('/home', function () {
