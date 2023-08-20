@@ -8,10 +8,8 @@
 @endsection
 
 @section('content')
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     @include('partials.content-header', ['name' => 'category', 'key' => 'Add'])
-    <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -38,10 +36,7 @@
                 </div>
 
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+        </div>
     </div>
-    <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
 @endsection
