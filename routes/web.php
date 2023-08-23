@@ -64,10 +64,17 @@ Route::prefix('admin')->group(function () {
     // Product
     Route::prefix('products')->group(function () {
         Route::get('/index', [
-            'as' => 'product.index',
+            'as' => 'products.index',
             'uses' => 'App\Http\Controllers\AdminProductController@index'
         ]);
-
+        Route::get('/create', [
+            'as' => 'products.create',
+            'uses' => 'App\Http\Controllers\AdminProductController@create'
+        ]);
+        Route::post('/store', [
+            'as' => 'products.store',
+            'uses' => 'App\Http\Controllers\AdminProductController@store'
+        ]);
     });
 });
 
