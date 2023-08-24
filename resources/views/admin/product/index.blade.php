@@ -4,8 +4,17 @@
 <title>
     Add product
 </title>
+@endsection
+
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('admins/product/index/list.css')}}">
+@endsection
+
+@section('js')
 
 @endsection
+
 
 @section('content')
 <div class="content-wrapper">
@@ -30,26 +39,27 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($products as $productItem)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Iphone 3</td>
-                                    <td>2.300.000</td>
+                                    <th scope="row">{{$productItem->id}}</th>
+                                    <td>{{$productItem->name}}</td>
+                                    <td>{{$productItem->price}}</td>
                                     <td>
-                                        <img src="" alt="">
+                                        <img class="product_image_150_100" src="{{$productItem->feature_image_path}}" alt="">
                                     </td>
-                                    <td>Điện thoại</td>
+                                    <td>{{$productItem->category->name}}</td>
                                     <td>
                                         <a href="" class="btn btn-default">Edit</a>
                                         <a href="" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
 
                 <div class="col-md-12">
-
+                    {{$products->links()}}
                 </div>
             </div>
         </div>
