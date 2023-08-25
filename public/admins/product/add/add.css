@@ -1,3 +1,9 @@
 .select2-selection__choice{
     background-color: rgb(53, 152, 152) !important;
 }
+.image_detail {
+    width: 30%;
+}
+.container_image_detail {
+    margin-top: 20px;
+}

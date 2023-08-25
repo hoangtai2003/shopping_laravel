@@ -75,6 +75,14 @@ Route::prefix('admin')->group(function () {
             'as' => 'products.store',
             'uses' => 'App\Http\Controllers\AdminProductController@store'
         ]);
+        Route::get('/edit{id}', [
+            'as' => 'products.edit',
+            'uses' => 'App\Http\Controllers\AdminProductController@edit'
+        ]);
+        Route::post('/update{id}', [
+            'as' => 'products.update',
+            'uses' => 'App\Http\Controllers\AdminProductController@update'
+        ]);
     });
 });
 
