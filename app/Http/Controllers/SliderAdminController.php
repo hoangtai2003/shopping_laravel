@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SliderAddRequest;
 use Illuminate\Http\Request;
 
 class SliderAdminController extends Controller
@@ -11,6 +12,8 @@ class SliderAdminController extends Controller
     }
     public function create(){
         return view('admin.slider.add');
-        dd('tai');
+    }
+    public function store(SliderAddRequest $request){
+
     }
 }
