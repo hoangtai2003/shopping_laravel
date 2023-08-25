@@ -141,4 +141,19 @@ class AdminProductController extends Controller
             Log::error("Message: " . $exp->getMessage() . 'Line: ' . $exp->getLine());
         }
     }
+    public function delete($id){
+        try {
+            $this->product->find($id)->delete();
+            return response()->json([
+                'code' => 200,
+                'message' => 'success'
+            ], status: 200);
+        } catch(Exception $exp){
+            Log::error("Message: " . $exp->getMessage() . 'Line: ' . $exp->getLine());
+            return response()->json([
+                'code' => 500,
+                'message' => 'fail'
+            ], status: 500);
+       }
+    }
 }
