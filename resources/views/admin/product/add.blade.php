@@ -37,7 +37,8 @@
                                 type="text"
                                 class="form-control @error('name') is-invalid @enderror"
                                 name="name"
-                                placeholder="Nhập tên sản phẩm">
+                                placeholder="Nhập tên sản phẩm"
+                                value = "{{old('name')}}">
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -48,7 +49,8 @@
                                 type="text"
                                 class="form-control @error('price') is-invalid @enderror"
                                 name="price"
-                                placeholder="Nhập tên sản phẩm">
+                                placeholder="Nhập tên sản phẩm"
+                                value = "{{old('price')}}">
                                 @error('price')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -91,10 +93,10 @@
                             <label>Nhập nội dung</label>
                             <textarea
                                 name="contents"
-                                class="form-control tinymce_editor_init @error('content') is-invalid @enderror"
-                                rows="8">
+                                class="form-control tinymce_editor_init @error('contents') is-invalid @enderror"
+                                rows="8"> {{old('contents')}}
                             </textarea>
-                            @error('content')
+                            @error('contents')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>

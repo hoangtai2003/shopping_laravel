@@ -51,6 +51,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('sliders.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Slider
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('products.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>

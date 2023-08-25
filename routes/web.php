@@ -88,5 +88,33 @@ Route::prefix('admin')->group(function () {
             'uses' => 'App\Http\Controllers\AdminProductController@delete'
         ]);
     });
+
+    //Slider
+    Route::prefix('sliders')->group(function () {
+        Route::get('/index', [
+            'as' => 'sliders.index',
+            'uses' => 'App\Http\Controllers\SliderAdminController@index'
+        ]);
+    //     Route::get('/create', [
+    //         'as' => 'products.create',
+    //         'uses' => 'App\Http\Controllers\AdminProductController@create'
+    //     ]);
+    //     Route::post('/store', [
+    //         'as' => 'products.store',
+    //         'uses' => 'App\Http\Controllers\AdminProductController@store'
+    //     ]);
+    //     Route::get('/edit{id}', [
+    //         'as' => 'products.edit',
+    //         'uses' => 'App\Http\Controllers\AdminProductController@edit'
+    //     ]);
+    //     Route::post('/update{id}', [
+    //         'as' => 'products.update',
+    //         'uses' => 'App\Http\Controllers\AdminProductController@update'
+    //     ]);
+    //     Route::get('/delete{id}', [
+    //         'as' => 'products.delete',
+    //         'uses' => 'App\Http\Controllers\AdminProductController@delete'
+    //     ]);
+    });
 });
 

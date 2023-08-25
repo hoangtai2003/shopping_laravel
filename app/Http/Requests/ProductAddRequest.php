@@ -20,7 +20,7 @@ class ProductAddRequest extends FormRequest
             'name' => 'required|unique:products|max:255|min:10',
             'price' => 'required',
             'category_id' => 'required',
-            'content' => 'required',
+            'contents' => 'required',
         ];
     }
 }
