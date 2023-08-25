@@ -95,10 +95,10 @@ Route::prefix('admin')->group(function () {
             'as' => 'sliders.index',
             'uses' => 'App\Http\Controllers\SliderAdminController@index'
         ]);
-    //     Route::get('/create', [
-    //         'as' => 'products.create',
-    //         'uses' => 'App\Http\Controllers\AdminProductController@create'
-    //     ]);
+        Route::get('/create', [
+            'as' => 'sliders.create',
+            'uses' => 'App\Http\Controllers\SliderAdminController@create'
+        ]);
     //     Route::post('/store', [
     //         'as' => 'products.store',
     //         'uses' => 'App\Http\Controllers\AdminProductController@store'
