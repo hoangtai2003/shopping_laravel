@@ -20,7 +20,6 @@
 @section('content')
 <div class="content-wrapper">
     @include('partials.content-header', ['name' => 'product', 'key' => 'List'])
-
     <div class="content">
         <div class="container-fluid">
             <div class="row">

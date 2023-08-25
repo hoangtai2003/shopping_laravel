@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Components\Recusive;
+use App\Http\Requests\ProductAddRequest;
 use App\Traits\StorageImageTrait;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -13,9 +14,11 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AdminProductController extends Controller
 {
+    use SoftDeletes;
     use StorageImageTrait;
     private $category;
     private $product;
@@ -44,7 +47,7 @@ class AdminProductController extends Controller
         $htmlOption = $recusive->categoryRecusive($parentId);
         return $htmlOption;
     }
-    public function store(Request $request){
+    public function store(ProductAddRequest $request){
         try {
             DB::beginTransaction();
             $dataProductCreate = [
