@@ -103,18 +103,18 @@ Route::prefix('admin')->group(function () {
             'as' => 'sliders.store',
             'uses' => 'App\Http\Controllers\SliderAdminController@store'
         ]);
-    //     Route::get('/edit{id}', [
-    //         'as' => 'products.edit',
-    //         'uses' => 'App\Http\Controllers\AdminProductController@edit'
-    //     ]);
-    //     Route::post('/update{id}', [
-    //         'as' => 'products.update',
-    //         'uses' => 'App\Http\Controllers\AdminProductController@update'
-    //     ]);
-    //     Route::get('/delete{id}', [
-    //         'as' => 'products.delete',
-    //         'uses' => 'App\Http\Controllers\AdminProductController@delete'
-    //     ]);
+        Route::get('/edit{id}', [
+            'as' => 'sliders.edit',
+            'uses' => 'App\Http\Controllers\SliderAdminController@edit'
+        ]);
+        Route::post('/update{id}', [
+            'as' => 'sliders.update',
+            'uses' => 'App\Http\Controllers\SliderAdminController@update'
+        ]);
+        Route::get('/delete{id}', [
+            'as' => 'sliders.delete',
+            'uses' => 'App\Http\Controllers\SliderAdminController@delete'
+        ]);
     });
 });
 

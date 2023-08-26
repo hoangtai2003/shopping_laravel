@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AdminProductController extends Controller
 {
-    use SoftDeletes;
     use StorageImageTrait;
     private $category;
     private $product;

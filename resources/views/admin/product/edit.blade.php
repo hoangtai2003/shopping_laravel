@@ -44,9 +44,9 @@
                                 type="file"
                                 class="form-control-file"
                                 name="feature_image_path">
-                            <div class="col-md-12 container_image_detail" >
+                            <div class="col-md-12 " >
                                 <div class="row">
-                                    <img src="{{$product->feature_image_path}}" alt="">
+                                    <img  class="container_image_detail" src="{{$product->feature_image_path}}" alt="">
                                 </div>
                             </div>
                         </div>

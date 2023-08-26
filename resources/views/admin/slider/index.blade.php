@@ -12,6 +12,14 @@
 
 <link rel="stylesheet" href="{{asset('admins/slider/index/index.css')}}">
 @endsection
+
+
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('admins/slider/index/index.js')}}"></script>
+@endsection
+
+
 @section('content')
 <div class="content-wrapper">
     @include('partials.content-header', ['name' => 'Slider', 'key' => 'Add'])
@@ -42,8 +50,10 @@
                                         <img class="image_slider" src = "{{$slider->image_path}}">
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-default">Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
+                                        <a href="{{route('sliders.edit', ['id' => $slider->id])}}" class="btn btn-default">Edit</a>
+                                        <a href=""
+                                            data-url = "{{route('sliders.delete', ['id' => $slider->id])}}"
+                                            class="btn btn-danger action_delete">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
