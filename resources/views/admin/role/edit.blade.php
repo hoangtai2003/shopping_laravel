@@ -29,11 +29,11 @@
 
 @section('content')
 <div class="content-wrapper">
-    @include('partials.content-header', ['name' => 'Roles', 'key' => 'Add'])
+    @include('partials.content-header', ['name' => 'Roles', 'key' => 'Edit'])
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <form action="{{route('roles.store')}}" method="post" enctype="multipart/form-data" style="width: 100%;">
+                <form action="{{route('roles.update', ['id' => $role->id])}}" method="post" enctype="multipart/form-data" style="width: 100%;">
                     <div class="col-md-12">
                         @csrf
                         <div class="form-group">
@@ -42,14 +42,15 @@
                                 type="text"
                                 class="form-control"
                                 name = "name"
-                                placeholder="Nhập tên vai trò">
+                                placeholder="Nhập tên vai trò"
+                                value="{{$role->name}}">
                         </div>
                         <div class="form-group">
                             <label>Mô tả vai trò</label>
                                 <textarea
                                     class="form-control "
                                     name = "display_name"
-                                    rows="4">
+                                    rows="4">{{$role->display_name}}
                                 </textarea>
                         </div>
                     </div>
@@ -71,6 +72,7 @@
                                                     <input
                                                         type="checkbox"
                                                         name="permission_id[]"
+                                                        {{ $permissionsChecked->contains('id', $permissionsChildrentItem->id) ? 'checked' : ''}}
                                                         value="{{$permissionsChildrentItem->id}}"
                                                         class="checkbox_childrent">
                                                 </label>

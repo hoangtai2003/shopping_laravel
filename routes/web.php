@@ -183,22 +183,22 @@ Route::prefix('admin')->group(function () {
             'as' => 'roles.create',
             'uses' => 'App\Http\Controllers\RolesAdminController@create'
         ]);
-        // Route::post('/store', [
-        //     'as' => 'users.store',
-        //     'uses' => 'App\Http\Controllers\UserAdminController@store'
-        // ]);
-        // Route::get('/edit{id}', [
-        //     'as' => 'users.edit',
-        //     'uses' => 'App\Http\Controllers\UserAdminController@edit'
-        // ]);
-        // Route::post('/update{id}', [
-        //     'as' => 'users.update',
-        //     'uses' => 'App\Http\Controllers\UserAdminController@update'
-        // ]);
-        // Route::get('/delete{id}', [
-        //     'as' => 'users.delete',
-        //     'uses' => 'App\Http\Controllers\UserAdminController@delete'
-        // ]);
+        Route::post('/store', [
+            'as' => 'roles.store',
+            'uses' => 'App\Http\Controllers\RolesAdminController@store'
+        ]);
+        Route::get('/edit{id}', [
+            'as' => 'roles.edit',
+            'uses' => 'App\Http\Controllers\RolesAdminController@edit'
+        ]);
+        Route::post('/update{id}', [
+            'as' => 'roles.update',
+            'uses' => 'App\Http\Controllers\RolesAdminController@update'
+        ]);
+        Route::get('/delete{id}', [
+            'as' => 'roles.delete',
+            'uses' => 'App\Http\Controllers\RolesAdminController@delete'
+        ]);
     });
 });
 
