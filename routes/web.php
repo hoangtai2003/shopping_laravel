@@ -179,10 +179,10 @@ Route::prefix('admin')->group(function () {
             'uses' => 'App\Http\Controllers\RolesAdminController@index'
         ]);
         /* The code block you provided is defining routes for user administration. */
-        // Route::get('/create', [
-        //     'as' => 'users.create',
-        //     'uses' => 'App\Http\Controllers\UserAdminController@create'
-        // ]);
+        Route::get('/create', [
+            'as' => 'roles.create',
+            'uses' => 'App\Http\Controllers\RolesAdminController@create'
+        ]);
         // Route::post('/store', [
         //     'as' => 'users.store',
         //     'uses' => 'App\Http\Controllers\UserAdminController@store'
