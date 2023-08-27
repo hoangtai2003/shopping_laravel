@@ -150,10 +150,10 @@ Route::prefix('admin')->group(function () {
             'as' => 'users.index',
             'uses' => 'App\Http\Controllers\UserAdminController@index'
         ]);
-        // Route::get('/create', [
-        //     'as' => 'settings.create',
-        //     'uses' => 'App\Http\Controllers\AdminSettingController@create'
-        // ]);
+        Route::get('/create', [
+            'as' => 'users.create',
+            'uses' => 'App\Http\Controllers\UserAdminController@create'
+        ]);
         // Route::post('/store', [
         //     'as' => 'settings.store',
         //     'uses' => 'App\Http\Controllers\AdminSettingController@store'
