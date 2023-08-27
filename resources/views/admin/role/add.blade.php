@@ -30,39 +30,41 @@
                                 type="text"
                                 class="form-control"
                                 name = "name"
-                                placeholder="Nhập tên vai trò"
-                                value="{{old('name')}}">
+                                placeholder="Nhập tên vai trò">
                         </div>
                         <div class="form-group">
                             <label>Mô tả vai trò</label>
                                 <textarea
                                     class="form-control "
                                     name = "display_name"
-                                    rows="4">{{old('description')}}
+                                    rows="4">
                                 </textarea>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="row">
+                            @foreach($permissionsParent as $permissionsParentItem)
                             <div class="card border-primary mb-3 col-md-12">
                                 <div class="card-header">
                                     <label>
                                         <input type="checkbox" value="">
                                     </label>
-                                    Modlule sản phẩm
+                                    Modlule  {{$permissionsParentItem->name}}
                                 </div>
                                 <div class="row">
-                                    @for($i = 1;$i<=4;$i++)
+                                    @foreach($permissionsParentItem->permissionsChildrent as $permissionsChildrentItem)
                                         <div class="card-body text-primary col-md-3">
                                             <h5 class="card-title">
                                                 <label>
-                                                    <input type="checkbox" value="">
+                                                    <input type="checkbox" name="permissions_id[]" value="">
                                                 </label>
-                                                Thêm sản phẩm</h5>
+                                                {{$permissionsChildrentItem->name}}
+                                            </h5>
                                         </div>
-                                    @endfor
+                                    @endforeach
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
