@@ -57,7 +57,7 @@
                                 multiple class="form-control-file"
                                 name="image_path[]">
                                 @foreach($product->prodctImages  as $productImageItem)
-                                <div class="col-md-12">
+                                <div class="col-md-3">
                                     <div class="row">
                                         <img class="image_detail" src="{{$productImageItem->image_path}}" alt="">
                                     </div>
