@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('users.update', ['id' => $user->id])}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Tên slider</label>

@@ -14,11 +14,12 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use App\Traits\DeleteModelTrait;
 
 
 class AdminProductController extends Controller
 {
-    use StorageImageTrait;
+    use StorageImageTrait, DeleteModelTrait;
     private $category;
     private $product;
     private $productImage;
@@ -144,18 +145,6 @@ class AdminProductController extends Controller
         }
     }
     public function delete($id){
-        try {
-            $this->product->find($id)->delete();
-            return response()->json([
-                'code' => 200,
-                'message' => 'success'
-            ], status: 200);
-        } catch(Exception $exp){
-            Log::error("Message: " . $exp->getMessage() . 'Line: ' . $exp->getLine());
-            return response()->json([
-                'code' => 500,
-                'message' => 'fail'
-            ], status: 500);
-       }
+        return $this->deleteModelTrait($id, $this->product);
     }
 }

@@ -41,7 +41,6 @@ class AdminSettingController extends Controller
         return redirect()->route('settings.index');
     }
     public function delete($id){
-        $this->deleteModelTrait($id, $this->setting);
-
+       return  $this->deleteModelTrait($id, $this->setting);
     }
 }

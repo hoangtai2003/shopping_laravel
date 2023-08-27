@@ -162,14 +162,14 @@ Route::prefix('admin')->group(function () {
             'as' => 'users.edit',
             'uses' => 'App\Http\Controllers\UserAdminController@edit'
         ]);
-        // Route::post('/update{id}', [
-        //     'as' => 'settings.update',
-        //     'uses' => 'App\Http\Controllers\AdminSettingController@update'
-        // ]);
-        // Route::get('/delete{id}', [
-        //     'as' => 'settings.delete',
-        //     'uses' => 'App\Http\Controllers\AdminSettingController@delete'
-        // ]);
+        Route::post('/update{id}', [
+            'as' => 'users.update',
+            'uses' => 'App\Http\Controllers\UserAdminController@update'
+        ]);
+        Route::get('/delete{id}', [
+            'as' => 'users.delete',
+            'uses' => 'App\Http\Controllers\UserAdminController@delete'
+        ]);
     });
 });
 
