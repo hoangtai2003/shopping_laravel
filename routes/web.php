@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin', 'App\Http\Controllers\AdminController@loginAdmin');
 Route::post('/admin', 'App\Http\Controllers\AdminController@postLoginAdmin');
-Route::post('/login', function () {
-    return view('login');
-});
 Route::get('/home', function () {
     return view('home');
 });
@@ -145,6 +142,34 @@ Route::prefix('admin')->group(function () {
             'as' => 'settings.delete',
             'uses' => 'App\Http\Controllers\AdminSettingController@delete'
         ]);
+    });
+
+    //Users
+    Route::prefix('users')->group(function () {
+        Route::get('/index', [
+            'as' => 'users.index',
+            'uses' => 'App\Http\Controllers\UserAdminController@index'
+        ]);
+        // Route::get('/create', [
+        //     'as' => 'settings.create',
+        //     'uses' => 'App\Http\Controllers\AdminSettingController@create'
+        // ]);
+        // Route::post('/store', [
+        //     'as' => 'settings.store',
+        //     'uses' => 'App\Http\Controllers\AdminSettingController@store'
+        // ]);
+        // Route::get('/edit{id}', [
+        //     'as' => 'settings.edit',
+        //     'uses' => 'App\Http\Controllers\AdminSettingController@edit'
+        // ]);
+        // Route::post('/update{id}', [
+        //     'as' => 'settings.update',
+        //     'uses' => 'App\Http\Controllers\AdminSettingController@update'
+        // ]);
+        // Route::get('/delete{id}', [
+        //     'as' => 'settings.delete',
+        //     'uses' => 'App\Http\Controllers\AdminSettingController@delete'
+        // ]);
     });
 });
 
