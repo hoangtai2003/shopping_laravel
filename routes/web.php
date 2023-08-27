@@ -158,10 +158,10 @@ Route::prefix('admin')->group(function () {
             'as' => 'users.store',
             'uses' => 'App\Http\Controllers\UserAdminController@store'
         ]);
-        // Route::get('/edit{id}', [
-        //     'as' => 'settings.edit',
-        //     'uses' => 'App\Http\Controllers\AdminSettingController@edit'
-        // ]);
+        Route::get('/edit{id}', [
+            'as' => 'users.edit',
+            'uses' => 'App\Http\Controllers\UserAdminController@edit'
+        ]);
         // Route::post('/update{id}', [
         //     'as' => 'settings.update',
         //     'uses' => 'App\Http\Controllers\AdminSettingController@update'
