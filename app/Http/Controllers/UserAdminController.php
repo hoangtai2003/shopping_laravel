@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 class UserAdminController extends Controller
 {
     private $user, $role;
@@ -21,5 +22,14 @@ class UserAdminController extends Controller
     public function create(){
         $roles =$this->role->all();
         return view('admin.user.add', compact('roles'));
+    }
+    public function store(Request $request){
+        $user = $this->user->create ([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+        $user->roles()->attach($request->role_id);
+        return redirect()->route('users.index');
     }
 }

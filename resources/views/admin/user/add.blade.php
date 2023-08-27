@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Tên slider</label>
@@ -30,8 +30,7 @@
                                 type="text"
                                 class="form-control "
                                 name = "name"
-                                placeholder="Nhập tên"
-                                value="{{old('name')}}">
+                                placeholder="Nhập tên">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
@@ -39,8 +38,7 @@
                                 type="email"
                                 class="form-control "
                                 name = "email"
-                                placeholder="Nhập email"
-                                value="{{old('name')}}">
+                                placeholder="Nhập email">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
