@@ -20,11 +20,7 @@
 
 
 @section('js')
-<script>
-    $('.checkbox_wrapper').on('click', function(){
-        $(this).parents('.card').find('.checkbox_childrent').prop('checked', $(this).prop('checked'));
-    });
-</script>
+<script src="{{asset('admins/role/add/add.js')}}"></script>
 @endsection
 
 @section('content')
@@ -56,6 +52,11 @@
                     </div>
                     <div class="col-md-12">
                         <div class="row">
+                            <div class="col-md-12">
+                                <label>
+                                    <input type="checkbox" class="checkall"> CheckAll
+                                </label>
+                            </div>
                             @foreach($permissionsParent as $permissionsParentItem)
                             <div class="card border-primary mb-3 col-md-12">
                                 <div class="card-header">
