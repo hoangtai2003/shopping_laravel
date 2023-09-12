@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('permissions', function (Blueprint $table) {
-            $table->string('key_code');
+            if (!Schema::hasColumn('permissions', 'key_code')) {
+                $table->string("key_code");
+            }
         });
     }
 
@@ -22,7 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('permissions', function (Blueprint $table) {
-            //
+            if (Schema::hasColumn('permissions', 'key_code')) {
+                $table->dropColumn("key_code");
+            }
         });
     }
 };

@@ -14,7 +14,8 @@ class PermissionAdminController extends Controller
         $permission = Permission::create([
             'name' => $request->module_parent,
             'display_name' => $request->module_parent,
-            'parent_id' => 0
+            'parent_id' => 0,
+            'key_code'=> $request->module_parent
         ]);
         foreach($request->module_children as $value){
             Permission::create([
