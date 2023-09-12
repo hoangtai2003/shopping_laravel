@@ -28,3 +28,4 @@ trait StorageImageTrait{
         return $dataUploadTrait;
     }
 }
+

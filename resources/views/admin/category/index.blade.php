@@ -40,7 +40,6 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div class="col-md-12">
                     {{ $categories->links() }}
                 </div>

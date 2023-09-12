@@ -18,7 +18,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/create', [
            'as' => 'categories.create',
            'uses' => 'App\Http\Controllers\CategoryController@create',
-           'middleware' => 'can:category-add'
+            'middleware' => 'can:category-add'
         ]);
         Route::post('/store', [
             'as' => 'categories.store',
@@ -43,7 +43,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/index', [
             'as' => 'menus.index',
             'uses' => 'App\Http\Controllers\MenuController@index',
-            'middleware' => 'can:menu-list'
+            // 'middleware' => 'can:menu-list'
         ]);
         Route::get('/create', [
             'as' => 'menus.create',
@@ -83,7 +83,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit{id}', [
             'as' => 'products.edit',
             'uses' => 'App\Http\Controllers\AdminProductController@edit',
-            'middleware' => 'can:product-edit'
+            // 'middleware' => 'can:product-edit'
         ]);
         Route::post('/update{id}', [
             'as' => 'products.update',

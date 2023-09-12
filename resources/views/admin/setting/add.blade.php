@@ -25,7 +25,7 @@
                             <input
                                 type="text"
                                 class="form-control @error('config_key') is-invalid @enderror"
-                                name = "config_key"
+                                name ="config_key"
                                 placeholder="Nhập config key"
                                 value="{{old('config_key')}}">
                                 @error('config_key')
@@ -38,7 +38,7 @@
                                 <input
                                     type="text"
                                     class="form-control @error('config_value') is-invalid @enderror"
-                                    name = "config_value"
+                                    name ="config_value"
                                     placeholder="Nhập config value"
                                     value="{{old('config_value')}}">
                                     @error('config_value')
@@ -50,7 +50,7 @@
                                 <label>Config value</label>
                                 <textarea
                                     class="form-control @error('config_value') is-invalid @enderror"
-                                    name = "config_value "
+                                    name ="config_value "
                                     placeholder="Nhập config value"
                                     rows="5"
                                 >{{old('config_value')}}</textarea>

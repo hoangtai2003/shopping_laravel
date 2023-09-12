@@ -19,7 +19,7 @@ class CategoryController extends Controller
         return view('admin.category.add', compact('htmlOption'));
     }
     public function index(){
-        $categories = $this->category->latest()->paginate(5);
+        $categories = $this->category->latest()->simplePaginate(5);
         return view('admin.category.index', compact('categories'));
     }
     public function store(Request $request)

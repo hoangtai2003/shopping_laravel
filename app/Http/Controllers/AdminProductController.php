@@ -34,7 +34,7 @@ class AdminProductController extends Controller
         $this->productTag = $productTag;
     }
     public function index(){
-        $products = $this->product->latest()->paginate(5);
+        $products = $this->product->latest()->simplePaginate(5);
         return view('admin.product.index', compact('products'));
     }
     public function create(){
@@ -54,7 +54,8 @@ class AdminProductController extends Controller
                 'name' => $request->name,
                 'price' => $request->price,
                 'content' => $request->contents,
-                'user_id' => auth()->id(),
+                // 'user_id' => auth()->id(),
+                'user_id' => 35,
                 'category_id' => $request->category_id
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image_path', 'product');
@@ -83,8 +84,8 @@ class AdminProductController extends Controller
                     $tagInstance = $this->tags->firstOrCreate(['name' => $tagItem]);
                     $tagIds[] = $tagInstance->id;
                 }
+                $product->tags()->attach($tagIds);
             }
-            $product->tags()->attach($tagIds);
             DB::commit();
             return redirect() -> route('products.index');
         } catch(Exception $exp) {
@@ -97,6 +98,7 @@ class AdminProductController extends Controller
         $product = $this->product->find($id);
         $htmlOption = $this->getCategory($product->category_id);
         return view('admin.product.edit', compact('htmlOption', 'product'));
+
     }
     public function update(Request $request, $id){
         try {
@@ -135,8 +137,8 @@ class AdminProductController extends Controller
                     $tagInstance = $this->tags->firstOrCreate(['name' => $tagItem]);
                     $tagIds[] = $tagInstance->id;
                 }
+                $product->tags()->sync($tagIds);
             }
-            $product->tags()->sync($tagIds);
             DB::commit();
             return redirect() -> route('products.index');
         } catch(Exception $exp) {
@@ -148,3 +150,4 @@ class AdminProductController extends Controller
         return $this->deleteModelTrait($id, $this->product);
     }
 }
+

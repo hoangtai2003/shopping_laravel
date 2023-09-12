@@ -7,6 +7,10 @@
 
 @endsection
 
+@section('js')
+<script src="{{asset('admins/role/add/add.js')}}"></script>
+@endsection
+
 @section('content')
 <div class="content-wrapper">
     @include('partials.content-header', ['name' => 'Permission', 'key' => 'Add'])
@@ -27,10 +31,17 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
+                                <div class="col-md-12">
+                                    <label>
+                                        <input type="checkbox" class="checkall"> CheckAll
+                                    </label>
+                                </div>
                                 @foreach(config('permissions.module_children') as $moduleItemChildren)
                                 <div class="col-md-3">
                                     <label>
-                                        <input type="checkbox" value="{{$moduleItemChildren}}" name="module_children[]"> {{$moduleItemChildren}}
+                                        <input type="checkbox" value="{{$moduleItemChildren}}"
+                                            name="module_children[]"
+                                            class="checkbox_all"> {{$moduleItemChildren}}
                                     </label>
                                 </div>
                                 @endforeach
