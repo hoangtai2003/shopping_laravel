@@ -19,11 +19,11 @@ class RolesAdminController extends Controller
     }
     public function index(){
         $roles = $this->role->paginate(10);
-        return view('admin.role.index', compact('roles'));
+        return view('admin.admin.role.index', compact('roles'));
     }
     public function create(){
         $permissionsParent = $this->permission->where('parent_id', 0)->get();
-        return view ('admin.role.add', compact('permissionsParent'));
+        return view ('admin.admin.role.add', compact('permissionsParent'));
     }
     public function store(Request $request){
         $role =  $this->role->create([
@@ -37,7 +37,7 @@ class RolesAdminController extends Controller
         $permissionsParent = $this->permission->where('parent_id', 0)->get();
         $role = $this->role->find($id);
         $permissionsChecked = $role->permissions;
-        return view ('admin.role.edit', compact('permissionsParent', 'role', 'permissionsChecked'));
+        return view ('admin.admin.role.edit', compact('permissionsParent', 'role', 'permissionsChecked'));
     }
     public function update($id, Request $request){
          $this->role->find($id)->update([

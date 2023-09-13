@@ -10,4 +10,5 @@ class Slider extends Model
 {
     use SoftDeletes;
     protected $guarded = [];
+    protected $table = 'sliders';
 }

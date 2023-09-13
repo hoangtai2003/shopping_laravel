@@ -20,10 +20,10 @@ class SliderAdminController extends Controller
     }
     public function index(){
         $sliders = $this->slider->paginate(5);
-        return view('admin.slider.index', compact('sliders'));
+        return view('admin.admin.slider.index', compact('sliders'));
     }
     public function create(){
-        return view('admin.slider.add');
+        return view('admin.admin.slider.add');
     }
     public function store(SliderAddRequest $request)
     {
@@ -46,7 +46,7 @@ class SliderAdminController extends Controller
     }
     public function edit($id){
         $slider = $this->slider->find($id);
-        return view('admin.slider.edit', compact('slider'));
+        return view('admin.admin.slider.edit', compact('slider'));
     }
     public function update(Request $request, $id){
         try {

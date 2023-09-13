@@ -22,11 +22,11 @@ class UserAdminController extends Controller
     }
     public function index(){
         $users = $this->user->paginate(5);
-        return view('admin.user.index', compact('users'));
+        return view('admin.admin.user.index', compact('users'));
     }
     public function create(){
         $roles =$this->role->all();
-        return view('admin.user.add', compact('roles'));
+        return view('admin.admin.user.add', compact('roles'));
     }
     public function store(Request $request){
         try {
@@ -48,7 +48,7 @@ class UserAdminController extends Controller
         $roles =$this->role->all();
         $user = $this->user->find($id);
         $roleOfUser = $user->roles;
-        return view('admin.user.edit', compact('roles', 'user', 'roleOfUser'));
+        return view('admin.admin.user.edit', compact('roles', 'user', 'roleOfUser'));
     }
     public function update($id, Request $request){
         try {

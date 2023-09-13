@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Components\Recusive;
 use Illuminate\Support\Str;
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -16,11 +17,17 @@ class CategoryController extends Controller
     }
     public function create(){
         $htmlOption = $this->getCategory($parentId = '');
-        return view('admin.category.add', compact('htmlOption'));
+        return view('admin.admin.category.add', compact('htmlOption'));
     }
     public function index(){
         $categories = $this->category->latest()->simplePaginate(5);
-        return view('admin.category.index', compact('categories'));
+        return view('admin.admin.category.index', compact('categories'));
+    }
+    public function indexClient($slug, $categoryId) {
+        $categorysLimit = Category::where('parent_id', 0)->take(3)->get();
+        $products = Product::where('category_id', $categoryId)->paginate(12);
+        $categorys = Category::where('parent_id', 0)->get();
+        return view('client.product.category.list', compact('categorysLimit','products', 'categorys'));
     }
     public function store(Request $request)
     {
@@ -41,7 +48,7 @@ class CategoryController extends Controller
     {
         $category = $this->category->find($id);
         $htmlOption = $this->getCategory($category->parent_id);
-        return view('admin.category.edit', compact('category', 'htmlOption'));
+        return view('admin.admin.category.edit', compact('category', 'htmlOption'));
     }
     public function delete($id){
         $this->category->find($id)->delete();
