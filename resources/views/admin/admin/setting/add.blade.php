@@ -50,7 +50,7 @@
                                 <label>Config value</label>
                                 <textarea
                                     class="form-control @error('config_value') is-invalid @enderror"
-                                    name ="config_value "
+                                    name ="config_value"
                                     placeholder="Nhập config value"
                                     rows="5"
                                 >{{old('config_value')}}</textarea>
@@ -59,11 +59,9 @@
                                 @enderror
                             </div>
                         @endif
-
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

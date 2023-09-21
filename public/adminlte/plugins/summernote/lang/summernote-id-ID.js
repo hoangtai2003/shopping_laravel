@@ -1,5 +1,5 @@
 /*!
- * 
+ *
  * Super simple WYSIWYG editor v0.8.20
  * https://summernote.org
  *
@@ -70,7 +70,7 @@ var __webpack_exports__ = {};
         link: 'Tautan',
         insert: 'Tambah tautan',
         unlink: 'Hapus tautan',
-        edit: 'Edit',
+        edit: 'edit',
         textToDisplay: 'Tampilan teks',
         url: 'Tautan tujuan',
         openInNewWindow: 'Buka di jendela baru'

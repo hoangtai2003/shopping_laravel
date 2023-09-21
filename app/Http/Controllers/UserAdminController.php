@@ -20,15 +20,29 @@ class UserAdminController extends Controller
         $this->user = $user;
         $this->role = $role;
     }
-    public function index(){
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
         $users = $this->user->paginate(5);
         return view('admin.admin.user.index', compact('users'));
     }
-    public function create(){
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
         $roles =$this->role->all();
         return view('admin.admin.user.add', compact('roles'));
     }
-    public function store(Request $request){
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         try {
             DB::beginTransaction();
             $user = $this->user->create ([
@@ -44,13 +58,31 @@ class UserAdminController extends Controller
             Log::error("Message: " . $exp->getMessage() . 'Line: ' . $exp->getLine());
         }
     }
-    public function edit($id){
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return $this->deleteModelTrait($id, $this->user);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
         $roles =$this->role->all();
         $user = $this->user->find($id);
         $roleOfUser = $user->roles;
         return view('admin.admin.user.edit', compact('roles', 'user', 'roleOfUser'));
     }
-    public function update($id, Request $request){
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         try {
             DB::beginTransaction();
             $this->user->find($id)->update ([
@@ -67,7 +99,12 @@ class UserAdminController extends Controller
             Log::error("Message: " . $exp->getMessage() . 'Line: ' . $exp->getLine());
         }
     }
-    public function delete($id){
-        return $this->deleteModelTrait($id, $this->user);
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

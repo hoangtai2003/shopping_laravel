@@ -13,12 +13,13 @@
 @endsection
 @section('content')
 <div class="content-wrapper">
-    @include('admmin.partials.content-header', ['name' => 'edit', 'key' => 'Add'])
+    @include('admin.partials.content-header', ['name' => 'edit', 'key' => 'Add'])
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="{{route('settings.update', ['id'=>$setting->id])}}" method="post">
+                    <form action="{{route('settings.update', ['setting'=>$setting->id])}}" method="post">
+                        @method('PUT')
                         @csrf
                         <div class="form-group">
                             <label>Config key</label>
@@ -45,12 +46,12 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                             </div>
-                            @elseif(request()->type === 'Textarea')
+                        @elseif(request()->type === 'Textarea')
                             <div class="form-group">
                                 <label>Config value</label>
                                 <textarea
                                     class="form-control @error('config_value') is-invalid @enderror"
-                                    name = "config_value "
+                                    name = "config_value"
                                     placeholder="Nhập config value"
                                     rows="5"
                                 >{{$setting->config_value}}</textarea>
@@ -58,8 +59,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                        @endif
-
+                           @endif
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

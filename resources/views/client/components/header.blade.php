@@ -5,8 +5,8 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-{{--                            <li><a href="#"><i class="fa fa-phone"></i> {{getConfigValueFromSettingTable('phone_contact')}}</a></li>--}}
-{{--                            <li><a href="#"><i class="fa fa-envelope"></i> {{getConfigValueFromSettingTable('email')}}</a></li>--}}
+                            <li><a href="#"><i class="fa fa-phone"></i> {{getConfigValueFromSettingTable('phone_contact')}}</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> {{getConfigValueFromSettingTable('email')}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -14,9 +14,9 @@
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
                             <li>
-{{--                                <a href="{{getConfigValueFromSettingTable('facebook_link')}}">--}}
-{{--                                    <i class="fa fa-facebook"></i>--}}
-{{--                                </a>--}}
+                                <a href="{{getConfigValueFromSettingTable('facebook_link')}}">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
                             </li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>

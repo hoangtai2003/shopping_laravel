@@ -32,8 +32,8 @@
                                     <th scope="row">{{ $category->id }}</th>
                                     <td>{{ $category->name }}</td>
                                     <td>
-                                        <a href="{{ route('categories.edit', ['id' => $category->id]) }}" class="btn btn-default">Edit</a>
-                                        <a href="{{ route('categories.delete', ['id' => $category->id]) }}" class="btn btn-danger">Delete</a>
+                                        <a href="{{route('categories.edit', ['category' => $category->id])}}" class="btn btn-default">Edit</a>
+                                        <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

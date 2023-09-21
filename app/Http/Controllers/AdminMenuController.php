@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Components\MenusRecusive;
+use App\Components\Recusive\MenusRecusive;
 use App\Models\Menu;
+use App\Traits\DeleteModelTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class MenuController extends Controller
+class AdminMenuController extends Controller
 {
+    use DeleteModelTrait;
     private $menuRecusive;
     private $menu;
     public function __construct(MenusRecusive $menusRecusive, Menu $menu)
@@ -16,15 +18,29 @@ class MenuController extends Controller
         $this->menuRecusive = $menusRecusive;
         $this->menu = $menu;
     }
-    public function index(){
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
         $menus = $this->menu->paginate(10);
         return view('admin.admin.menus.index', compact('menus'));
     }
-    public function create(){
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
         $optionSelect = $this->menuRecusive->menuRecusiveAdd();
         return view('admin.admin.menus.add', compact('optionSelect'));
     }
-    public function store (Request $request){
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         $this->menu->create ([
             'name' => $request->name,
             'parent_id' => $request->parent_id,
@@ -32,13 +48,30 @@ class MenuController extends Controller
         ]);
         return redirect() -> route('menus.index');
     }
-    public function edit($id, Request $request)
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $this->menu->find($id)->delete();
+        return redirect() -> route('menus.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $menuFollowIdEdit = $this->menu->find($id);
         $optionSelect = $this->menuRecusive->menuRecusiveEdit($menuFollowIdEdit->parent_id);
         return view('admin.admin.menus.edit', compact('optionSelect', 'menuFollowIdEdit'));
     }
-    public function update ($id, Request $request)
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
         $this->menu->find($id)->update([
             'name' => $request->name,
@@ -47,8 +80,8 @@ class MenuController extends Controller
         ]);
         return redirect() -> route('menus.index');
     }
-    public function delete($id){
-        $this->menu->find($id)->delete();
-        return redirect() -> route('menus.index');
-    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
 }

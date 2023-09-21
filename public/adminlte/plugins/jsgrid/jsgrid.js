@@ -2325,7 +2325,7 @@
 
         searchModeButtonTooltip: "Switch to searching",
         insertModeButtonTooltip: "Switch to inserting",
-        editButtonTooltip: "Edit",
+        editButtonTooltip: "edit",
         deleteButtonTooltip: "Delete",
         searchButtonTooltip: "Search",
         clearFilterButtonTooltip: "Clear filter",

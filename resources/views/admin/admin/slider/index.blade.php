@@ -50,9 +50,9 @@
                                         <img class="image_slider" src = "{{$slider->image_path}}">
                                     </td>
                                     <td>
-                                        <a href="{{route('sliders.edit', ['id' => $slider->id])}}" class="btn btn-default">Edit</a>
+                                        <a href="{{route('sliders.edit', ['slider' => $slider->id])}}" class="btn btn-default">Edit</a>
                                         <a href=""
-                                            data-url = "{{route('sliders.delete', ['id' => $slider->id])}}"
+                                            data-url = "{{route('sliders.show', ['slider' => $slider->id])}}"
                                             class="btn btn-danger action_delete">Delete</a>
                                     </td>
                                 </tr>

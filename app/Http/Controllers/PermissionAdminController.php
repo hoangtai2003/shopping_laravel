@@ -7,10 +7,17 @@ use Illuminate\Http\Request;
 
 class PermissionAdminController extends Controller
 {
-    public function create(){
+
+    public function create()
+    {
         return view('admin.admin.permission.add');
     }
-    public function store(Request $request){
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         $permission = Permission::create([
             'name' => $request->module_parent,
             'display_name' => $request->module_parent,
@@ -26,4 +33,7 @@ class PermissionAdminController extends Controller
             ]);
         }
     }
+
+
+
 }

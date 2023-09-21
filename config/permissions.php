@@ -1,7 +1,7 @@
 <?php
     return [
         'table_module' => [
-            'Category',
+            'index',
             'Menu',
             'Slider',
             'Product',
@@ -12,7 +12,7 @@
         'module_children' => [
             'List',
             'Add',
-            'Edit',
+            'edit',
             'Delete'
         ]
     ];

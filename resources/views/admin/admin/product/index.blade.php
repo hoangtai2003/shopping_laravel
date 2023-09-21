@@ -49,10 +49,10 @@
                                     </td>
                                     <td>{{optional($productItem->category)->name}}</td>
                                     <td>
-                                        <a href="{{ route('products.edit', ['id' => $productItem->id]) }}" class="btn btn-default">Edit</a>
+                                        <a href="{{ route('products.edit', ['product' => $productItem->id]) }}" class="btn btn-default">Edit</a>
                                         <a
                                             href=""
-                                            data-url = "{{route('products.delete', ['id' => $productItem->id])}}"
+                                            data-url = "{{route('products.show', ['product' => $productItem->id])}}"
                                             class="btn btn-danger action_delete" >
                                         Delete</a>
                                     </td>

@@ -37,7 +37,7 @@ class MenuPolicy
      */
     public function update(User $user)
     {
-        return $user->checkPermissionAccess('Menu_Update');
+        return $user->checkPermissionAccess('Menu_Edit');
     }
 
     /**

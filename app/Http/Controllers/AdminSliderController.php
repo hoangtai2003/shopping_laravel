@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Traits\DeleteModelTrait;
 
-class SliderAdminController extends Controller
+
+class AdminSliderController extends Controller
 {
     use StorageImageTrait, DeleteModelTrait;
     private $slider;
@@ -18,14 +19,27 @@ class SliderAdminController extends Controller
     {
         $this->slider = $slider;
     }
-    public function index(){
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
         $sliders = $this->slider->paginate(5);
         return view('admin.admin.slider.index', compact('sliders'));
     }
-    public function create(){
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
         return view('admin.admin.slider.add');
     }
-    public function store(SliderAddRequest $request)
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
         try {
             $dataInsert = [
@@ -44,11 +58,29 @@ class SliderAdminController extends Controller
             Log::error("Message: " . $exp->getMessage() . 'Line: ' . $exp->getLine());
         }
     }
-    public function edit($id){
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return $this->deleteModelTrait($id, $this->slider);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
         $slider = $this->slider->find($id);
         return view('admin.admin.slider.edit', compact('slider'));
     }
-    public function update(Request $request, $id){
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         try {
             $dataUpdate = [
                 'name' => $request->name,
@@ -66,7 +98,12 @@ class SliderAdminController extends Controller
             Log::error("Message: " . $exp->getMessage() . 'Line: ' . $exp->getLine());
         }
     }
-    public function delete($id){
-        return $this->deleteModelTrait($id, $this->slider);
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

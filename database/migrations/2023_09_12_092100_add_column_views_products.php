@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             if (!Schema::hasColumn('products', 'views_count')) {
-                $table->string("views_count");
+                $table->string("views_count")->nullable();
             }
         });
     }

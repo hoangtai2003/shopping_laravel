@@ -55,13 +55,12 @@
                                     <td>{{$setting->config_value}}</td>
                                     <td>
                                         <a
-                                            href="{{route('settings.edit', ['id'=>$setting->id]) . '?type= '. $setting->type}}"
+                                            href="{{route('settings.edit', ['setting'=>$setting->id]) . '?type= '. $setting->type}}"
                                             class="btn btn-default">Edit</a>
                                         <a
                                             href=""
-                                            data-url="{{route('settings.delete', ['id'=>$setting->id])}}"
+                                            data-url="{{route('settings.show', ['setting'=>$setting->id])}}"
                                             class="btn btn-danger action_delete"
-
                                         >Delete</a>
                                     </td>
                                 </tr>

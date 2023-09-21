@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('admin.layouts.admin')
 @section('title')
 <title>
     Trang chủ
@@ -25,12 +25,13 @@
 
 @section('content')
 <div class="content-wrapper">
-    @include('partials.content-header', ['name' => 'Roles', 'key' => 'Edit'])
+    @include('admin.partials.content-header', ['name' => 'Roles', 'key' => 'edit'])
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <form action="{{route('roles.update', ['id' => $role->id])}}" method="post" enctype="multipart/form-data" style="width: 100%;">
+                <form action="{{route('roles.update', ['role' => $role->id])}}" method="post" enctype="multipart/form-data" style="width: 100%;">
                     <div class="col-md-12">
+                        @method('PUT')
                         @csrf
                         <div class="form-group">
                             <label>Tên vai trò</label>

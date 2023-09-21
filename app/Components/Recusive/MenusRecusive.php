@@ -1,5 +1,5 @@
 <?php
-namespace App\Components;
+namespace App\Components\Recusive;
 
 use App\Models\Menu;
 

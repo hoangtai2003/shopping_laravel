@@ -7,8 +7,8 @@
 @endsection
 
 @section('css')
-<link href="{{asset('vendors/select2/cdn.jsdelivr.net_npm_select2@4.1.0-rc.0_dist_css_select2.min.css')}}" rel="stylesheet" />
-<link href="{{asset('admins/product/add/add.css')}}" rel="stylesheet" />
+    <link href="{{asset('vendors/select2/cdn.jsdelivr.net_npm_select2@4.1.0-rc.0_dist_css_select2.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('admins/product/add/add.css')}}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -73,7 +73,6 @@
                                 name="tags[]"
                                 class="form-control tags_select_choose"
                                 multiple="multiple">
-
                             </select>
                         </div>
                     </div>

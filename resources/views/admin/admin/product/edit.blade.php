@@ -13,12 +13,13 @@
 
 @section('content')
 <div class="content-wrapper">
-    @include('admin.partials.content-header', ['name' => 'product', 'key' => 'Edit'])
-    <form action="{{route('products.update', ['id' => $product->id])}}" method="post" enctype="multipart/form-data">
+    @include('admin.partials.content-header', ['name' => 'product', 'key' => 'edit'])
+    <form action="{{route('products.update', ['product' => $product->id])}}" method="post" enctype="multipart/form-data">
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
+                        @method('PUT')
                         @csrf
                         <div class="form-group">
                             <label>Tên sản phẩm</label>
@@ -56,13 +57,13 @@
                                 type="file"
                                 multiple class="form-control-file"
                                 name="image_path[]">
-                                @foreach($product->productImages  as $productImageItem)
+                            @foreach($product->productImages  as $productImageItem)
                                 <div class="col-md-3">
                                     <div class="row">
                                         <img class="image_detail" src="{{$productImageItem->image_path}}" alt="">
                                     </div>
                                 </div>
-                                @endforeach
+                            @endforeach
                         </div>
                         <div class="form-group">
                             <label>Chọn danh mục</label>

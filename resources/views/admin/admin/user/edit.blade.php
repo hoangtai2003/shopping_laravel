@@ -17,12 +17,13 @@
 
 @section('content')
 <div class="content-wrapper">
-    @include('admin.partials.content-header', ['name' => 'Users', 'key' => 'Edit'])
+    @include('admin.partials.content-header', ['name' => 'Users', 'key' => 'edit'])
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="{{route('users.update', ['id' => $user->id])}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('users.update', ['user' => $user->id])}}" method="post" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
                         <div class="form-group">
                             <label>Tên slider</label>

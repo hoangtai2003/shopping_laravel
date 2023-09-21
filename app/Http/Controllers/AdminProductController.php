@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Components\Recusive\CategoryRecusive;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use App\Components\Recusive;
-use App\Http\Requests\ProductAddRequest;
-use App\Traits\StorageImageTrait;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductTag;
 use App\Models\Tag;
+use App\Traits\DeleteModelTrait;
+use App\Traits\StorageImageTrait;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Exception;
-use App\Traits\DeleteModelTrait;
-
 
 class AdminProductController extends Controller
 {
@@ -33,30 +31,45 @@ class AdminProductController extends Controller
         $this->tags = $tags;
         $this->productTag = $productTag;
     }
-    public function index(){
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
         $products = $this->product->latest()->simplePaginate(5);
         return view('admin.admin.product.index', compact('products'));
     }
-    public function create(){
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
         $htmlOption = $this->getCategory($parentId = '');
         return view('admin.admin.product.add', compact('htmlOption'));
     }
     public function getCategory($parentId){
         $data = $this->category->all();
-        $recusive = new Recusive($data);
+        $recusive = new CategoryRecusive($data);
         $htmlOption = $recusive->categoryRecusive($parentId);
         return $htmlOption;
     }
-    public function store(ProductAddRequest $request){
+
+    /**
+     * Store a newly created resource in storage.
+     */
+
+    public function store(Request $request)
+    {
         try {
             DB::beginTransaction();
             $dataProductCreate = [
                 'name' => $request->name,
                 'price' => $request->price,
                 'content' => $request->contents,
-                // 'user_id' => auth()->id(),
-                'user_id' => 35,
-                'category_id' => $request->category_id
+                'user_id' => auth()->id(),
+                'category_id' => $request->category_id,
+                'views_count' => $request->views_count
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image_path', 'product');
             if (!empty( $dataUploadFeatureImage)){
@@ -92,15 +105,31 @@ class AdminProductController extends Controller
             DB::rollBack();
             Log::error("Message: " . $exp->getMessage() . 'Line: ' . $exp->getLine());
         }
-
     }
-    public function edit($id){
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return $this->deleteModelTrait($id, $this->product);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
         $product = $this->product->find($id);
         $htmlOption = $this->getCategory($product->category_id);
-        return view('admin.product.edit', compact('htmlOption', 'product'));
-
+        return view('admin.admin.product.edit', compact('htmlOption', 'product'));
     }
-    public function update(Request $request, $id){
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         try {
             DB::beginTransaction();
             $dataProductUpdate = [
@@ -108,7 +137,8 @@ class AdminProductController extends Controller
                 'price' => $request->price,
                 'content' => $request->contents,
                 'user_id' => auth()->id(),
-                'category_id' => $request->category_id
+                'category_id' => $request->category_id,
+                'views_count' => $request->views_count
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image_path', 'product');
             if (!empty( $dataUploadFeatureImage)){
@@ -146,8 +176,12 @@ class AdminProductController extends Controller
             Log::error("Message: " . $exp->getMessage() . 'Line: ' . $exp->getLine());
         }
     }
-    public function delete($id){
-        return $this->deleteModelTrait($id, $this->product);
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }
-

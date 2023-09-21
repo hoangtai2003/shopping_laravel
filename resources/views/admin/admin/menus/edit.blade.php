@@ -9,12 +9,13 @@
 
 @section('content')
 <div class="content-wrapper">
-    @include('admin.partials.content-header', ['name' => 'menus', 'key' => 'Edit'])
+    @include('admin.partials.content-header', ['name' => 'menus', 'key' => 'edit'])
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="{{ route('menus.update', ['id' => $menuFollowIdEdit->id]) }}" method="post">
+                    <form action="{{ route('menus.update', ['menu' => $menuFollowIdEdit->id]) }}" method="post">
+                        @method('PUT')
                         @csrf
                         <div class="form-group">
                             <label>Tên danh mục</label>

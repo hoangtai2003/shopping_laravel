@@ -1,9 +1,7 @@
 <?php
-namespace App\Components;
+namespace App\Components\Recusive;
 
-use App\Models\Category;
-
-class Recusive {
+class CategoryRecusive {
     private $data;
     private $htmlSelect = '';
 
