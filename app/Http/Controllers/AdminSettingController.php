@@ -48,10 +48,6 @@ class AdminSettingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        return $this->deleteModelTrait($id, $this->setting);
-    }
 
 
     public function edit(string $id)
@@ -71,6 +67,7 @@ class AdminSettingController extends Controller
         ]);
         return redirect()->route('settings.index');
     }
-
-
+    public function destroy(string $id){
+        return $this->deleteModelTrait($id, $this->setting);
+    }
 }

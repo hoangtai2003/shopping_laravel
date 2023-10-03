@@ -38,16 +38,18 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <table class="table">
-                        <thead>
+                    <form method="POST">
+                        @method('delete')
+                        <table class="table">
+                            <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Config key</th>
                                 <th scope="col">Config value</th>
                                 <th scope="col">Action</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             @foreach ($settings as $setting)
                                 <tr>
                                     <th scope="row">{{$setting->id}}</th>
@@ -58,15 +60,17 @@
                                             href="{{route('settings.edit', ['setting'=>$setting->id]) . '?type= '. $setting->type}}"
                                             class="btn btn-default">Edit</a>
                                         <a
-                                            href=""
-                                            data-url="{{route('settings.show', ['setting'=>$setting->id])}}"
+                                            href="{{route('settings.destroy', ['setting'=>$setting->id])}}"
                                             class="btn btn-danger action_delete"
                                         >Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </form>
+
+
                 </div>
 
                 <div class="col-md-12">

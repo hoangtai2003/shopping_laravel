@@ -17,29 +17,30 @@
                 <div class="col-md-12 ">
                     <a href="{{route ('menus.create')}}" class="btn btn-success float-right m-2">Add</a>
                 </div>
-                <div class="col-md-12">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Tên danh mục</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($menus as $menu)
+                    <div class="col-md-12">)
+                        <table class="table">
+                                <thead>
                                 <tr>
-                                    <th scope="row">{{ $menu->id }}</th>
-                                    <td>{{ $menu->name }}</td>
-                                    <td>
-                                        <a href="{{ route('menus.edit', ['menu' => $menu->id]) }}" class="btn btn-default">Edit</a>
-                                        <a href="{{ route('menus.show', ['menu' => $menu->id]) }}" class="btn btn-danger">Delete</a>
-                                    </td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Tên danh mục</th>
+                                    <th scope="col">Action</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                </thead>
+                                <tbody>
+                                @foreach ($menus as $menu)
+                                    <tr>
+                                        <th scope="row">{{ $menu->id }}</th>
+                                        <td>{{ $menu->name }}</td>
+                                        <td>
+                                            <a href="{{ route('menus.edit', ['menu' => $menu->id]) }}" class="btn btn-default">Edit</a>
+                                            <a href="{{ route('menus.show', ['menu' => $menu->id]) }}" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                    </div>
+
 
                 <div class="col-md-12">
                     {{ $menus->links() }}

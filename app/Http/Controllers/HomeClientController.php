@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\View\View;
 
-class HomeController extends Controller
+class HomeClientController extends Controller
 {
     public function index():View
     {
